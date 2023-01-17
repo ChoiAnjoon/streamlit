@@ -78,7 +78,7 @@ def recommendation(items):
         return rec_predict
         
 def app():
-    st.header('Food Recommendation System')
+    st.markdown("<h1 style='text-align: center; color: black;'>Food Recommendation System</h1>", unsafe_allow_html=True)
     st.subheader('꼭! F5 쳐누르고 다시처음부터 하세요')
     try:
         st.write('Choose please')

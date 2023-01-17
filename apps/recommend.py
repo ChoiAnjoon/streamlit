@@ -76,7 +76,8 @@ def recommendation(items):
 
 
 def app():
-    st.header('Food Recommendation System')
+    # st.header('Food Recommendation System')
+    st.markdown("<h1 style='text-align: center; color: Red;'>Food Recommendation System</h1>", unsafe_allow_html=True)
     st.subheader("재시작시, 꼭 F5룰 누르시오.")
     items = st.multiselect(
         'What are your favorite foods',
@@ -91,28 +92,37 @@ def app():
 
             col1, col2, col3, col4, col5 = st.columns(5)
 
+            st.markdown("""
+            <style>
+            .small-font {
+                font-size:24px !important;
+                text-align: center;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+            
             with col1:
-                st.header(f"{rec_predict[0]}")
+                st.markdown('<p class="small-font">' + rec_predict[0] + '</p>', unsafe_allow_html=True)
                 image = Image.open(food2img[rec_predict[0]])
                 st.image(image)
 
             with col2:
-                st.header(f"{rec_predict[1]}")
+                st.markdown('<p class="small-font">' + rec_predict[1] + '</p>', unsafe_allow_html=True)
                 image = Image.open(food2img[rec_predict[1]])
                 st.image(image)
 
             with col3:
-                st.header(f"{rec_predict[2]}")
+                st.markdown('<p class="small-font">' + rec_predict[2] + '</p>', unsafe_allow_html=True)
                 image = Image.open(food2img[rec_predict[2]])
                 st.image(image)
 
             with col4:
-                st.header(f"{rec_predict[3]}")
+                st.markdown('<p class="small-font">' + rec_predict[3] + '</p>', unsafe_allow_html=True)
                 image = Image.open(food2img[rec_predict[3]])
                 st.image(image)
 
             with col5:
-                st.header(f"{rec_predict[4]}")
+                st.markdown('<p class="small-font">' + rec_predict[4] + '</p>', unsafe_allow_html=True)
                 image = Image.open(food2img[rec_predict[4]])
                 st.image(image)
 
