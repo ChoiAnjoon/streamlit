@@ -2,56 +2,95 @@ import streamlit as st
 import os.path
 import random
 import time
+import glob 
+from PIL import Image
 import warnings
 warnings.filterwarnings('ignore')
 
 
+def food_to_img()->dict:
+    paths = glob.glob('./data/food_img/*')
+
+    try:
+        food2img = { i.split('.')[-2].split('\\')[-1] : i for i in paths}
+    except:
+        food2img = { i.split('.')[-2].split('/')[-1] : i for i in paths}
+
+    return food2img
+
+food2img = food_to_img()
+
+
+
 def app():
-    st.header('멤버십 할인 서비스 적용')
-    st.subheader('멤버십 적용시 5% 할인')
+    st.markdown("""
+    <style>
+    .small-font {
+        font-size:20px !important;
+        text-align: center;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown("<h1 style='text-align: center; color: black;'>Apply membership discount service</h1>", unsafe_allow_html=True)
+    st.markdown('<h2 class="small-font">"5% discount when applying membership"</h2>', unsafe_allow_html=True)
+    # st.header('멤버십 할인 서비스 적용')
+    # st.subheader('멤버십 적용시 5% 할인')
 
     try:
         st.session_state['first']
         col1, col2, col3 = st.columns(3)
 
+        st.markdown("""
+        <style>
+        .small-font {
+            font-size:24px !important;
+            text-align: center;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
         with col1:
-            st.header("대학생")
+            # st.header("University student")
             st.image("https://static.streamlit.io/examples/cat.jpg")
+            st.markdown('<p class="small-font">"University student"</p>', unsafe_allow_html=True)
 
         with col2:
-            st.header("군인")
+            # st.header("soldier")
             st.image("https://static.streamlit.io/examples/dog.jpg")
+            st.markdown('<p class="small-font">"soldier"</p>', unsafe_allow_html=True)
 
         with col3:
-            st.header("근거지 인증")
+            # st.header("vulnerable social groups")
             st.image("https://static.streamlit.io/examples/cat.jpg")
+            st.markdown('<p class="small-font">"vulnerable social groups"</p>', unsafe_allow_html=True)
 
         
         col1, col2, col3 = st.columns(3)
 
         with col1:
-            con = st.container()
-            con.caption("Bundling Result")
-            student = st.checkbox("대학생")
+            student = st.checkbox("University student")
 
             if student:
-                st.write("학생 할인 10%")
+                con = st.container()
+                con.caption("Membership Benefits")
+                st.success("10% student discount")
 
         with col2:
-            con = st.container()
-            con.caption("Bundling Result")
-            soldiar = st.checkbox("군인")
+            soldiar = st.checkbox("soldier")
 
             if soldiar:
-                st.write("군인 할인 10%")
+                con = st.container()
+                con.caption("Membership Benefits")
+                st.success("10% military discount")
 
         with col3:
-            con = st.container()
-            con.caption("Bundling Result")
-            location = st.checkbox("근거지 거주")
+            location = st.checkbox("vulnerable social groups")
 
             if location:
-                st.write("근거지 할인 10%")
+                con = st.container()
+                con.caption("Membership Benefits")
+                st.success("10% base discount")
 
         
         col1, col2, col3 = st.columns(3)
@@ -60,12 +99,12 @@ def app():
             pass
 
         with col2:
-            con = st.container()
-            con.caption("Bundling Result")
-            sol = st.checkbox("해당되는 멤버십 없음")
+            sol = st.checkbox("No applicable membership")
 
             if sol:
-                st.write("멤버십 적옹 X")          
+                con = st.container()
+                con.caption("Membership benefits not applied")
+                st.success("Membership application X")    
 
         with col3:
             pass
@@ -76,4 +115,4 @@ def app():
 
 
     except KeyError:
-            st.error("Enter your data before computing. Go to the Input Page")
+            st.error("Please select food on the bundling page.")

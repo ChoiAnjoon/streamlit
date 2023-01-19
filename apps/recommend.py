@@ -12,39 +12,6 @@ foods = ['Chicken', 'Pizza', 'Jajangmyeon', 'Champon', 'Tteokbokki', 'hamburger'
 'Steamed chicken', 'Gamjatang', 'pasta', 'sushi', 'Mara Xiang Guo', 'rice noodles', 'Abalone porridge', 
 'sashimi platter', 'Pork feet', 'kebab', 'Grilled Fish', 'Curry', 'lamb skewers', 'ramen']
 
-buddling = {
-'Chicken': ['Cola', 'Cajun potatoes', 'draft beer'],
-'Pizza': ['pasta', 'Cola', 'Chicken tender'],
-'Jajangmyeon': ['Sweet and sour pork', 'dumpling', 'Cola'],
-'Champon': ['Sweet and sour pork', 'fried rice', 'Cola'],
-'Tteokbokki': ['Assorted Tempura', 'kimbap', 'fish cake'],
-'hamburger': ['Cajun potatoes', 'Chicken tender', 'Cola'],
-'Sweet and sour pork': ['Jajangmyeon', 'Champon', 'dumpling'],
-'fried rice': ['Sweet and sour pork', 'Champon broth', 'Cola'],
-'kimbap': ['Tteokbokki', 'ramen', 'fish cake'],
-'pork cutlet': ['Udon', 'salad', 'Cola'],
-'Udon': ['pork cutlet', 'Assorted Tempura', 'fish cake'],
-'Bul Gogi': ['egg roll', 'draft beer', 'Water cold noodle'],
-'Maratang': ['Sweet and sour pork', 'fried rice', 'Cola'],
-'Water cold noodle': ['beef', 'Bul Gogi', 'Bossam'],
-'Bossam': ['Water cold noodle', 'Makguksu', 'Cola'],
-'beef': ['Water cold noodle', 'wine', 'egg roll'],
-'Steamed chicken': ['kimbap', 'salad', 'Cola'],
-'Gamjatang': ['soju', 'egg roll', 'Bul Gogi'],
-'pasta': ['Cola', 'salad', 'Chicken tender'],
-'sushi': ['Udon', 'pork cutlet', 'Cola'],
-'Mara Xiang Guo': ['wine', 'draft beer', 'Kwubaro'],
-'rice noodles': ['dumpling', 'Cola', 'egg roll'],
-'Abalone porridge': ['sushi', 'Cola', 'Group'],
-'sashimi platter': ['soju', 'Maeuntang', 'draft beer'],
-'Pork feet': ['Cola', 'soju', 'Makguksu'],
-'kebab': ['Cola', 'hamburger', 'soup'],
-'Grilled Fish': ['draft beer', 'soju', 'Bul Gogi'],
-'Curry': ['soup', 'pork cutlet', 'Cola'],
-'lamb skewers': ['draft beer', 'Kwubaro', 'Champon'],
-'ramen': ['kimbap', 'dumpling', 'hamburger']
-}
-
 def food_to_img()->dict:
     paths = glob.glob('./data/food_img/*')
 
@@ -75,13 +42,24 @@ def recommendation(items):
         return rec_predict
 
 
+
 def app():
-    # st.header('Food Recommendation System')
-    st.markdown("<h1 style='text-align: center; color: Red;'>Food Recommendation System</h1>", unsafe_allow_html=True)
-    st.subheader("재시작시, 꼭 F5룰 누르시오.")
+    st.markdown("""
+    <style>
+    .small-font {
+        font-size:20px !important;
+        text-align: center;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown("<h1 style='text-align: center; color: black;'>Food Recommendation System</h1>", unsafe_allow_html=True)
+    # st.subheader("When restarting, be sure to press F5.")
+    st.markdown('<h2 class="small-font">"When restarting, be sure to press F5."</h2>', unsafe_allow_html=True)
     items = st.multiselect(
         'What are your favorite foods',
         foods, max_selections=4)
+
 
     if st.button('Show Recommendation'):
         try:
@@ -100,34 +78,36 @@ def app():
             }
             </style>
             """, unsafe_allow_html=True)
-            
+
             with col1:
-                st.markdown('<p class="small-font">' + rec_predict[0] + '</p>', unsafe_allow_html=True)
                 image = Image.open(food2img[rec_predict[0]])
                 st.image(image)
+                st.markdown('<p class="small-font">' + rec_predict[0] + '</p>', unsafe_allow_html=True)
 
             with col2:
-                st.markdown('<p class="small-font">' + rec_predict[1] + '</p>', unsafe_allow_html=True)
                 image = Image.open(food2img[rec_predict[1]])
                 st.image(image)
+                st.markdown('<p class="small-font">' + rec_predict[1] + '</p>', unsafe_allow_html=True)
 
             with col3:
-                st.markdown('<p class="small-font">' + rec_predict[2] + '</p>', unsafe_allow_html=True)
                 image = Image.open(food2img[rec_predict[2]])
                 st.image(image)
+                st.markdown('<p class="small-font">' + rec_predict[2] + '</p>', unsafe_allow_html=True)
 
             with col4:
-                st.markdown('<p class="small-font">' + rec_predict[3] + '</p>', unsafe_allow_html=True)
                 image = Image.open(food2img[rec_predict[3]])
                 st.image(image)
+                st.markdown('<p class="small-font">' + rec_predict[3] + '</p>', unsafe_allow_html=True)
 
             with col5:
-                st.markdown('<p class="small-font">' + rec_predict[4] + '</p>', unsafe_allow_html=True)
                 image = Image.open(food2img[rec_predict[4]])
                 st.image(image)
+                st.markdown('<p class="small-font">' + rec_predict[4] + '</p>', unsafe_allow_html=True)
+
+            st.balloons()
 
         except TypeError:
-            st.info("4개를 채워라.")
+            st.info("Please select four items.")
 
 
 # 이미지 출력 

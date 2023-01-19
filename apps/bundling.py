@@ -8,11 +8,6 @@ from PIL import Image
 
 warnings.filterwarnings('ignore') 
 
-foods = ['Chicken', 'Pizza', 'Jajangmyeon', 'Champon', 'Tteokbokki', 'hamburger', 'Sweet and sour pork', 
-'fried rice', 'kimbap', 'pork cutlet', 'Udon', 'Bul Gogi', 'Maratang', 'Water cold noodle', 'Bossam', 'beef', 
-'Steamed chicken', 'Gamjatang', 'pasta', 'sushi', 'Mara Xiang Guo', 'rice noodles', 'Abalone porridge', 
-'sashimi platter', 'Pork feet', 'kebab', 'Grilled Fish', 'Curry', 'lamb skewers', 'ramen']
-
 buddling = {
 'Chicken': ['Cola', 'Cajun potatoes', 'draft beer'],
 'Pizza': ['pasta', 'Cola', 'Chicken tender'],
@@ -60,54 +55,47 @@ def food_to_img()->dict:
 food2img = food_to_img()
 
 
-def recommendation(items):
-    if len(items) == 4:
-        rec_list = []
-        seed = []
-        for food in foods:
-            if food not in items:
-                rec_list.append(food)
-
-        for i in items:
-            seed.append(str(foods.index(i) + 1))
-
-        seed = int(''.join(seed))
-        random.seed(seed)
-        rec_predict = random.sample(rec_list, 5)
-        time.sleep(2)
-        return rec_predict
-        
 def app():
-    st.markdown("<h1 style='text-align: center; color: black;'>Food Recommendation System</h1>", unsafe_allow_html=True)
-    st.subheader('꼭! F5 쳐누르고 다시처음부터 하세요')
+    st.markdown("""
+    <style>
+    .small-font {
+        font-size:20px !important;
+        text-align: center;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown("<h1 style='text-align: center; color: black;'>Food Bundling</h1>", unsafe_allow_html=True)
+    st.markdown('<h2 class="small-font">"When restarting, be sure to press F5."</h2>', unsafe_allow_html=True)
     try:
-        st.write('Choose please')
         st.session_state['rec_predict']
+        st.subheader('You only need to click on the bundled offer for one food.')
+        st.markdown('<p class="small-font">"You must click on only one food unconditionally."</p>', unsafe_allow_html=True)
 
         col1, col2, col3, col4, col5 = st.columns(5)
 
         with col1:
-            st.header(f"{st.session_state['rec_predict'][0]}")
+            # st.header(f"{st.session_state['rec_predict'][0]}")
             image = Image.open(food2img[st.session_state['rec_predict'][0]])
             st.image(image)
 
         with col2:
-            st.header(f"{st.session_state['rec_predict'][1]}")
+            # st.header(f"{st.session_state['rec_predict'][1]}")
             image = Image.open(food2img[st.session_state['rec_predict'][1]])
             st.image(image)
 
         with col3:
-            st.header(f"{st.session_state['rec_predict'][2]}")
+            # st.header(f"{st.session_state['rec_predict'][2]}")
             image = Image.open(food2img[st.session_state['rec_predict'][2]])
             st.image(image)
 
         with col4:
-            st.header(f"{st.session_state['rec_predict'][3]}")
+            # st.header(f"{st.session_state['rec_predict'][3]}")
             image = Image.open(food2img[st.session_state['rec_predict'][3]])
             st.image(image)
 
         with col5:
-            st.header(f"{st.session_state['rec_predict'][4]}")
+            # st.header(f"{st.session_state['rec_predict'][4]}")
             image = Image.open(food2img[st.session_state['rec_predict'][4]])
             st.image(image)
 
@@ -164,7 +152,7 @@ def app():
                 st.session_state.button_clicked1 = True
 
             if (
-                st.button("Bundling_1", on_click=callback1)
+                st.button(f"{st.session_state['rec_predict'][0]}", on_click=callback1)
                 or st.session_state.button_clicked1
             ):
                 
@@ -185,7 +173,6 @@ def app():
                 if z2:
                     # st.write(buddling.get(st.session_state['rec_predict'][0])[1])
                     st.session_state['first'].append(buddling.get(st.session_state['rec_predict'][0])[1])
-
                 if z3:
                     # st.write(buddling.get(st.session_state['rec_predict'][0])[2])
                     st.session_state['first'].append(buddling.get(st.session_state['rec_predict'][0])[2])
@@ -193,8 +180,6 @@ def app():
                 
                 # st.write(st.session_state['first'])
                 st.session_state['picked_food'] = st.session_state['rec_predict'][0]
-            
-                
     
         with col2: 
 
@@ -206,7 +191,7 @@ def app():
                 st.session_state.button_clicked2 = True
 
             if (
-                st.button("Bundling_2", on_click=callback2)
+                st.button(f"{st.session_state['rec_predict'][1]}", on_click=callback2)
                 or st.session_state.button_clicked2
             ):
                 
@@ -246,7 +231,7 @@ def app():
                 st.session_state.button_clicked3 = True
 
             if (
-                st.button("Bundling_3", on_click=callback3)
+                st.button(f"{st.session_state['rec_predict'][2]}", on_click=callback3)
                 or st.session_state.button_clicked3
             ):
                 
@@ -286,7 +271,7 @@ def app():
                 st.session_state.button_clicked4 = True
 
             if (
-                st.button("Bundling_4", on_click=callback4)
+                st.button(f"{st.session_state['rec_predict'][3]}", on_click=callback4)
                 or st.session_state.button_clicked4
             ):
                 
@@ -326,7 +311,7 @@ def app():
                 st.session_state.button_clicked5 = True
 
             if (
-                st.button("Bundling_5", on_click=callback5)
+                st.button(f"{st.session_state['rec_predict'][4]}", on_click=callback5)
                 or st.session_state.button_clicked5
             ):
                 
