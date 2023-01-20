@@ -21,7 +21,6 @@ def food_to_img()->dict:
 food2img = food_to_img()
 
 
-
 def app():
     st.markdown("""
     <style>
@@ -52,17 +51,20 @@ def app():
 
         with col1:
             # st.header("University student")
-            st.image("https://static.streamlit.io/examples/cat.jpg")
+            image = Image.open(food2img['student'])
+            st.image(image)
             st.markdown('<p class="small-font">"University student"</p>', unsafe_allow_html=True)
 
         with col2:
             # st.header("soldier")
-            st.image("https://static.streamlit.io/examples/dog.jpg")
+            image = Image.open(food2img['soldiar'])
+            st.image(image)
             st.markdown('<p class="small-font">"soldier"</p>', unsafe_allow_html=True)
 
         with col3:
             # st.header("vulnerable social groups")
-            st.image("https://static.streamlit.io/examples/cat.jpg")
+            image = Image.open(food2img['vulnerable social groups'])
+            st.image(image)
             st.markdown('<p class="small-font">"vulnerable social groups"</p>', unsafe_allow_html=True)
 
         
