@@ -147,10 +147,9 @@ def app():
     # st.subheader('Cross Selling items')
 
     if st.button("Click to Cross Selling button"):
-
         st.caption('10% discount if you buy now')
-        col1, col2, col3 = st.columns(3)
         
+        col1, col2, col3 = st.columns(3)
         cross_selling_items = cross_selling()
 
         with col1:
@@ -168,7 +167,7 @@ def app():
             st.markdown('<p class="small-font">' + cross_selling_items[1] + '</p>', unsafe_allow_html=True)
 
         with col3:
- 
+
             # st.header(f"{cross_selling_items[2]}")
             image = Image.open(food2img[cross_selling_items[2]])
             st.image(image)
