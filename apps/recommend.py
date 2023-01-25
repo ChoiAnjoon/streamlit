@@ -15,12 +15,19 @@ foods = ['Chicken', 'Pizza', 'Jajangmyeon', 'Champon', 'Tteokbokki', 'hamburger'
 def food_to_img()->dict:
     paths = glob.glob('./data/food_img/*')
 
-    try:
+    if "\\" in paths[0]:
         food2img = { i.split('.')[-2].split('\\')[-1] : i for i in paths}
-    except:
+    else:
         food2img = { i.split('.')[-2].split('/')[-1] : i for i in paths}
 
     return food2img
+
+    # try:
+    #     food2img = { i.split('.')[-2].split('\\')[-1] : i for i in paths}
+    # except:
+    #     food2img = { i.split('.')[-2].split('/')[-1] : i for i in paths}
+
+    # return food2img
 
 food2img = food_to_img()
 
@@ -44,10 +51,6 @@ def recommendation(items):
 
 
 def app():
-    paths = glob.glob('./data/food_img/*')
-    st.write(paths)
-    st.write(food2img)
-
     st.markdown("""
     <style>
     .small-font {
