@@ -23,7 +23,6 @@ def food_to_img()->dict:
     return food2img
 
 food2img = food_to_img()
-print(food2img)
 
 def recommendation(items):
     if len(items) == 4:
@@ -45,6 +44,10 @@ def recommendation(items):
 
 
 def app():
+    paths = glob.glob('./data/food_img/*')
+    st.write(paths)
+    st.write(food2img)
+
     st.markdown("""
     <style>
     .small-font {
