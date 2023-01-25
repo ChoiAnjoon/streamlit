@@ -13,7 +13,7 @@ dessert = ['Americano', 'sandwich', 'waffle', 'Soboro bread', 'Cheese bread',
 
 
 def food_to_img()->dict:
-    paths = glob.glob('./data/food_img/*')
+    paths = glob.glob('../data/food_img/*')
 
     try:
         food2img = { i.split('.')[-2].split('\\')[-1] : i for i in paths}
