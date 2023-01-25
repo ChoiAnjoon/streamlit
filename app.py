@@ -4,7 +4,7 @@ import random
 import time
 import warnings
 warnings.filterwarnings('ignore') 
-from apps import bundling, recommend, cross, membership # import your app modules here
+from apps import bundling, recommend, cross, membership, video # import your app modules here
 
 app = MultiApp()
 
@@ -13,6 +13,7 @@ app.add_app("Food Recommend", recommend.app)
 app.add_app("Food Bundling", bundling.app)
 app.add_app("Membership_discount", membership.app)
 app.add_app("Food Crosselling", cross.app)
+app.add_app("more GCI", video.app)
 
 # The main app
 app.run()
