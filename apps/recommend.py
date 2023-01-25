@@ -13,7 +13,7 @@ foods = ['Chicken', 'Pizza', 'Jajangmyeon', 'Champon', 'Tteokbokki', 'hamburger'
 'sashimi platter', 'Pork feet', 'kebab', 'Grilled Fish', 'Curry', 'lamb skewers', 'ramen']
 
 def food_to_img()->dict:
-    paths = glob.glob('../data/food_img/*')
+    paths = glob.glob('./data/food_img/*')
 
     try:
         food2img = { i.split('.')[-2].split('\\')[-1] : i for i in paths}
@@ -23,7 +23,6 @@ def food_to_img()->dict:
     return food2img
 
 food2img = food_to_img()
-print(food2img)
 
 def recommendation(items):
     if len(items) == 4:
@@ -45,6 +44,10 @@ def recommendation(items):
 
 
 def app():
+    paths = glob.glob('./data/food_img/*')
+    st.write(paths)
+    st.write(food2img)
+
     st.markdown("""
     <style>
     .small-font {
