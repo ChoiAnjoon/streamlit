@@ -45,7 +45,7 @@ def recommendation(items):
         seed = int(''.join(seed))
         random.seed(seed)
         rec_predict = random.sample(rec_list, 5)
-        time.sleep(2)
+        # time.sleep(2)
         return rec_predict
 
 
@@ -70,6 +70,9 @@ def app():
 
     if st.button('Show Recommendation'):
         try:
+            with st.spinner('AI Recommendation ...'):
+                time.sleep(2)
+
             rec_predict = recommendation(items)
             # st.write('추천 시작:', rec_predict)
             st.session_state['rec_predict'] = rec_predict
