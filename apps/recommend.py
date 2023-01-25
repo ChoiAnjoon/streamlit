@@ -51,10 +51,6 @@ def recommendation(items):
 
 
 def app():
-    paths = glob.glob('./data/food_img/*')
-    st.write(paths)
-    st.write(food2img)
-
     st.markdown("""
     <style>
     .small-font {
