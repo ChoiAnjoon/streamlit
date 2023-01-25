@@ -77,32 +77,33 @@ def app():
         with col1:
             # st.header(f"{st.session_state['rec_predict'][0]}")
             image = Image.open(food2img[st.session_state['rec_predict'][0]])
-            st.image(image)
+            st.image(image, caption=st.session_state['rec_predict'][0])
 
         with col2:
             # st.header(f"{st.session_state['rec_predict'][1]}")
             image = Image.open(food2img[st.session_state['rec_predict'][1]])
-            st.image(image)
+            st.image(image, caption=st.session_state['rec_predict'][1])
 
         with col3:
             # st.header(f"{st.session_state['rec_predict'][2]}")
             image = Image.open(food2img[st.session_state['rec_predict'][2]])
-            st.image(image)
+            st.image(image, caption=st.session_state['rec_predict'][2])
 
         with col4:
             # st.header(f"{st.session_state['rec_predict'][3]}")
             image = Image.open(food2img[st.session_state['rec_predict'][3]])
-            st.image(image)
+            st.image(image, caption=st.session_state['rec_predict'][3])
 
         with col5:
             # st.header(f"{st.session_state['rec_predict'][4]}")
             image = Image.open(food2img[st.session_state['rec_predict'][4]])
-            st.image(image)
+            st.image(image, caption=st.session_state['rec_predict'][4])
 
         col1, col2, col3, col4, col5 = st.columns(5)
 
 
         with col1:
+            st.caption('10% discount if you buy now')
             # a1 = [st.checkbox(i) for i in buddling.get(f"{st.session_state['rec_predict'][0]}")])
 
             # button_a = st.button('Click here', key='but_a')
@@ -182,7 +183,7 @@ def app():
                 st.session_state['picked_food'] = st.session_state['rec_predict'][0]
     
         with col2: 
-
+            st.caption('10% discount if you buy now')
             if "button_clicked2" not in st.session_state:
                 st.session_state.button_clicked2 = False
 
@@ -222,7 +223,7 @@ def app():
                 st.session_state['picked_food'] = st.session_state['rec_predict'][1]
 
         with col3:
-
+            st.caption('10% discount if you buy now')
             if "button_clicked3" not in st.session_state:
                 st.session_state.button_clicked3 = False
 
@@ -262,7 +263,7 @@ def app():
                 st.session_state['picked_food'] = st.session_state['rec_predict'][2]
 
         with col4:
-
+            st.caption('10% discount if you buy now')
             if "button_clicked4" not in st.session_state:
                 st.session_state.button_clicked4 = False
 
@@ -302,7 +303,7 @@ def app():
                 st.session_state['picked_food'] = st.session_state['rec_predict'][3]
 
         with col5:
-
+            st.caption('10% discount if you buy now')
             if "button_clicked5" not in st.session_state:
                 st.session_state.button_clicked5 = False
 

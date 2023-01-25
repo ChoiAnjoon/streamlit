@@ -43,7 +43,7 @@ def app():
     </style>
     """, unsafe_allow_html=True)
 
-    st.markdown("<h1 style='text-align: center; color: black;'>Final choice</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: black;'>purchase is complete</h1>", unsafe_allow_html=True)
     st.balloons()
 
     if len(st.session_state['first']) == 0:
@@ -143,7 +143,7 @@ def app():
     
 ############################################################################
     st.subheader('================================================')
-    st.markdown('<p class="small-font">"Cross Selling items"</p>', unsafe_allow_html=True)
+    st.markdown('<p class="small-font">"Dessert Cross Selling Recommendation"</p>', unsafe_allow_html=True)
     # st.subheader('Cross Selling items')
 
     if st.button("Click to Cross Selling button"):
@@ -171,3 +171,6 @@ def app():
             image = Image.open(food2img[cross_selling_items[2]])
             st.image(image)
             st.markdown('<p class="small-font">' + cross_selling_items[2] + '</p>', unsafe_allow_html=True)
+
+    
+    st.caption('10% discount if you buy now')
