@@ -23,6 +23,7 @@ def food_to_img()->dict:
     return food2img
 
 food2img = food_to_img()
+print(food2img)
 
 def recommendation(items):
     if len(items) == 4:
