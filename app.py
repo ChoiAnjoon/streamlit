@@ -11,9 +11,9 @@ app = MultiApp()
 # Add all your application here
 app.add_app("Food Recommend", recommend.app)
 app.add_app("Food Bundling", bundling.app)
-app.add_app("Membership_discount", membership.app)
-app.add_app("Food Crosselling", cross.app)
-app.add_app("more GCI", video.app)
+app.add_app("Membership Discount", membership.app)
+app.add_app("Food Cross Selling", cross.app)
+app.add_app("More GCI", video.app)
 
 # The main app
 app.run()
