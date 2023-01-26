@@ -5,7 +5,7 @@ import random
 import time
 import warnings
 import glob
-warnings.filterwarnings('ignore') 
+warnings.filterwarnings('ignore')
 
 foods = ['Chicken', 'Pizza', 'Jajangmyeon', 'Champon', 'Tteokbokki', 'hamburger', 'Sweet and sour pork', 
 'fried rice', 'kimbap', 'pork cutlet', 'Udon', 'Bul Gogi', 'Maratang', 'Water cold noodle', 'Bossam', 'beef', 
@@ -32,6 +32,7 @@ def food_to_img()->dict:
 food2img = food_to_img()
 
 def recommendation(items):
+    # important
     if len(items) == 4:
         rec_list = []
         seed = []
@@ -47,8 +48,6 @@ def recommendation(items):
         rec_predict = random.sample(rec_list, 5)
         # time.sleep(2)
         return rec_predict
-
-
 
 def app():
     st.markdown("""

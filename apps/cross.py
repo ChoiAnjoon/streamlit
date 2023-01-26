@@ -172,5 +172,3 @@ def app():
             image = Image.open(food2img[cross_selling_items[2]])
             st.image(image)
             st.markdown('<p class="small-font">' + cross_selling_items[2] + '</p>', unsafe_allow_html=True)
-
-    
